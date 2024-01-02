@@ -59,6 +59,7 @@ app.put("/todos/:id", async (req, res) => {
       [description, id]
     );
     res.json("Todo was updated");
+    console.log("Todo is edited");
   } catch (error) {
     console.log(error.message);
   }

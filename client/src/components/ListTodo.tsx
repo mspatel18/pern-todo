@@ -1,10 +1,5 @@
 import { useEffect, useState } from "react"
-
-interface Todo {
-    todo_id: number;
-    description:string;
-    // Add other properties here if needed
-}
+import EditTodo from "./EditTodo";
 
 const ListTodo = () => {
         const [todos,setTodos]=useState<Todo[]>([]);    
@@ -41,25 +36,24 @@ const ListTodo = () => {
                 <thead>
                     <tr className="bg-gray-800 text-white">
                         <th className="px-4 py-2">Description</th>
-                        {/* <th className="px-4 py-2">Edit</th> */}
-                        <th className="px-4 py-2">Complete</th>
+                        <th className="px-4 py-2">Edit</th>
+                        <th className="px-4 py-2">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
                     {todos.map(todo=>(
                         <tr key={todo.todo_id}>
                             <td className="border px-4 py-2">{todo.description}</td>
-                            {/* <td className="border px-4 py-2">
-                                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    Edit
-                                </button>
-                            </td> */}
+                            <td className="border px-4 py-2">
+
+                            <EditTodo todo={todo} />
+                            </td>
                             <td className="border px-4 py-2">
                                 <button
                                   onClick={() => deleteTodos(todo.todo_id)}
-                                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
                                 >
-                                    Complete
+                                    Delete
                                 </button>
                             </td>
                         </tr>
